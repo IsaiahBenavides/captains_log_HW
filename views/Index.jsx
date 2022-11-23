@@ -1,12 +1,13 @@
 const React = require("react")
+const DefaultLayout = require(`./layout/Default`)
 
 class Index extends React.Component {
     render(){
         const { logs } = this.props
         return(
-            <div>
+            <DefaultLayout title="Log Index Page">
                 <nav>
-                    <a href="/new">Create New Entry</a>
+                    <a href="/logs/new">Create New Entry</a>
                 </nav>
                 <ul>
                     {
@@ -15,6 +16,8 @@ class Index extends React.Component {
                                 <li key={i}>
                                     Entry Title:
                                     <a href={`/logs/${log._id}`}>{log.title}</a>
+                                    <br />
+                                    <a href={`/logs/${log._id}/edit`}>Edit this entry</a>
                                     <form action={`/logs/${log._id}?_method=DELETE`} method="POST">
                                         <input type="submit" value="DELETE"/>
                                     </form>
@@ -23,7 +26,7 @@ class Index extends React.Component {
                         })
                     }
                 </ul>
-            </div>
+            </DefaultLayout>
         )
     }
 }
