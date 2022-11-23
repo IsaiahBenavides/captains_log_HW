@@ -38,11 +38,15 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get(`/logs`, (req,res)=>{
     Log.find({}, (error, allLogs)=>{
         if(!error){
-            res.status(200).render(`Index`, {
+            res
+            .status(200)
+            .render(`Index`, {
                 logs: allLogs
             })
         }else{
-            res.status(400).send(error)
+            res
+            .status(400)
+            .send(error)
         }
     })
 })
@@ -64,9 +68,13 @@ app.post(`/logs`, (req,res)=>{
     }
     Log.create(req.body, (error, createdLog)=>{
         if(!error){
-            res.status(200).redirect(`/logs`)
+            res
+            .status(200)
+            .redirect(`/logs`)
         }else{
-            res.status(400).send(error)
+            res
+            .status(400)
+            .send(error)
         }
     })
 })
@@ -74,6 +82,21 @@ app.post(`/logs`, (req,res)=>{
 // ========== EDIT ==========
 
 // ========== SHOW ==========
+app.get(`/logs/:id`, (req,res)=>{
+    Log.findById(req.params.id, (error, foundLog)=>{
+        if(!error){
+            res
+            .status(200)
+            .render(`Show`, {
+                log: foundLog
+            })
+        }else{
+            res
+            .status(400)
+            .send(error)
+        }
+    })
+})
 
 // ========== ROUTES ==========
 
