@@ -7,7 +7,7 @@ const reactViews = require(`express-react-views`)
 const methodOverride = require(`method-override`)
 const mongoose = require(`mongoose`)
 const bodyParser = require(`body-parser`)
-const Log = require("./models/logs")
+const Log = require(`./models/logs`)
 
 
 mongoose.connect(process.env.MONGO_URI, {
