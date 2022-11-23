@@ -56,6 +56,11 @@ app.get(`/new`, (req,res)=>{
 })
 
 // ========== DELETE ==========
+app.delete(`/logs/:id`, (req,res)=>{
+    Log.findByIdAndDelete(req.params.id, (error, data)=>{
+        res.redirect(`/logs`)
+    })
+})
 
 // ========== UPDATE ==========
 

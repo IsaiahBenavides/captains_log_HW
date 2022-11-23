@@ -5,7 +5,7 @@ class Show extends React.Component{
         const {title, entry, shipIsBroken} = this.props.log
         return(
             <div>
-                <h1>{title}</h1><br />
+                <h1>{title}</h1>
                 <h3>{shipIsBroken ? `The ship is fully operational!` : `The ship needs emergency repairs!`}</h3>
                 <p>{entry}</p>
                 <a href="/logs">Back</a>
